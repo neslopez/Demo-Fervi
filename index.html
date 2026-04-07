@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f6f9;
+}
+
+/* HEADER */
+header {
+    background: white;
+    padding: 15px 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.logo {
+    width: 200px;
+    margin-bottom: 25px;
+}
+
+.title-header {
+    font-size: 14px;
+    color: #555;
+}
+
+/* BUSCADOR */
+.search {
+    padding: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.search input {
+    width: 100%;
+    max-width: 420px;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* CONTENEDOR */
+.container {
+    max-width: 500px;
+    margin: auto;
+    padding: 10px;
+}
+
+/* CATEGORÍA */
+.category {
+    margin: 15px 5px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* PRODUCTO */
+.product {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 14px;
+    padding: 12px;
+    margin-bottom: 12px;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: 0.2s;
+}
+
+.product:active {
+    transform: scale(0.98);
+}
+
+/* IMAGEN */
+.product img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+/* INFO */
+.info {
+    flex: 1;
+}
+
+.title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #222;
+}
+
+.price {
+    font-size: 15px;
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* BOTÓN */
+.btn {
+    background: #25D366;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+    <img src="logo.png" class="logo">
+    <div class="title-header">Catálogo digital</div>
+</header>
+
+<div class="search">
+<input type="text" placeholder="Buscar producto..." onkeyup="buscar(this.value)">
+</div>
+
+<div class="container">
+
+<div class="category">🔧 Termofusión</div>
+
+<div class="product" data-name="caño termofusion">
+<img src="Caño termofusion.jpg">
+<div class="info">
+<div class="title">Caño Termofusión 20mm</div>
+<div class="price">$5.772</div>
+</div>
+<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20el%20Caño%20Termofusión%2020mm">Consultar</a>
+</div>
+
+<div class="product" data-name="codo 90">
+<img src="Codo 90° 25mm.jpg">
+<div class="info">
+<div class="title">Codo 90° 25mm</div>
+<div class="price">$516</div>
+</div>
+<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20el%20Codo%2090%2025mm">Consultar</a>
+</div>
+
+<div class="category">🚿 Válvulas</div>
+
+<div class="product" data-name="valvula esferica">
+<img src="Válvula Esférica media.jpg">
+<div class="info">
+<div class="title">Válvula Esférica 1/2</div>
+<div class="price">$1.476</div>
+</div>
+<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20la%20Válvula%20Esférica%201/2">Consultar</a>
+</div>
+
+</div>
+
+<script>
+function buscar(valor) {
+    let productos = document.querySelectorAll(".product");
+
+    productos.forEach(p => {
+        let nombre = p.getAttribute("data-name");
+
+        if (nombre.includes(valor.toLowerCase())) {
+            p.style.display = "flex";
+        } else {
+            p.style.display = "none";
+        }
+    });
+}
+</script>
+
+</body>
+</html>
