@@ -3,182 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Catálogo</title>
+<title>FERVI</title>
 
 <style>
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
-    background: #f4f6f9;
+    background: #eef2f7;
 }
 
 /* HEADER */
 header {
     background: white;
-    padding: 15px 10px;
+    padding: 15px;
     text-align: center;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
 }
 
-.logo {
-    width: 200px;
-    margin-bottom: 25px;
+header h1 {
+    margin: 0;
+    color: #2c3e50;
 }
 
-.title-header {
-    font-size: 14px;
-    color: #555;
-}
-
-/* BUSCADOR */
-.search {
-    padding: 12px;
-    display: flex;
-    justify-content: center;
-}
-
-.search input {
-    width: 100%;
-    max-width: 420px;
-    padding: 12px;
-    border-radius: 12px;
-    border: none;
-    font-size: 14px;
-    outline: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+header p {
+    margin: 0;
+    font-size: 12px;
+    color: gray;
 }
 
 /* CONTENEDOR */
 .container {
     max-width: 500px;
     margin: auto;
+    padding: 15px;
+}
+
+/* BUSCADOR */
+#buscador {
+    width: 100%;
     padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
 }
 
-/* CATEGORÍA */
-.category {
-    margin: 15px 5px 8px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #333;
+/* CATEGORIAS */
+.categorias {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 15px;
 }
 
-/* PRODUCTO */
+.categorias button {
+    padding: 6px 10px;
+    border-radius: 20px;
+    border: none;
+    background: #ddd;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+/* PRODUCTOS */
 .product {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background: white;
     border-radius: 14px;
     padding: 12px;
-    margin-bottom: 12px;
-    gap: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    transition: 0.2s;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.product:active {
-    transform: scale(0.98);
-}
-
-/* IMAGEN */
-.product img {
-    width: 70px;
-    height: 70px;
-    border-radius: 12px;
-    object-fit: cover;
-}
-
-/* INFO */
-.info {
-    flex: 1;
+.product:hover {
+    transform: scale(1.02);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .title {
+    font-weight: bold;
     font-size: 14px;
-    font-weight: 600;
-    color: #222;
 }
 
 .price {
-    font-size: 15px;
-    color: #28a745;
+    color: #27ae60;
     font-weight: bold;
 }
 
-/* BOTÓN */
-.btn {
-    background: #25D366;
+/* CONTROLES */
+.controls {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.controls button {
+    background: #0d6efd;
+    border: none;
     color: white;
-    padding: 8px 12px;
-    border-radius: 10px;
-    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.qty {
+    min-width: 20px;
+    text-align: center;
+}
+
+/* CHECKOUT */
+.checkout {
+    background: white;
+    border-radius: 16px;
+    padding: 15px;
+    margin-top: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+/* INPUTS PRO */
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.field label {
     font-size: 12px;
+    margin-bottom: 3px;
+    color: #555;
+}
+
+.field input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.field input:focus {
+    outline: none;
+    border-color: #25D366;
+    box-shadow: 0 0 0 2px rgba(37,211,102,0.2);
+}
+
+/* TOTAL */
+.total {
     font-weight: bold;
-    white-space: nowrap;
+    margin: 10px 0;
+}
+
+/* BOTON */
+.btn {
+    width: 100%;
+    background: linear-gradient(135deg, #25D366, #1ebe5d);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.btn:active {
+    transform: scale(0.97);
+}
+
+/* ADMIN */
+.admin-panel {
+    display: none;
+    background: #fff8e1;
+    border-left: 4px solid #ffc107;
+    margin: 10px auto;
+    padding: 12px;
+    border-radius: 10px;
+    max-width: 500px;
 }
 </style>
 </head>
 
 <body>
 
-<header class="header">
-    <img src="logo.png" class="logo">
-    <div class="title-header">Catálogo digital</div>
+<header>
+<h1>FERVI</h1>
+<p>Distribuidora de artículos sanitarios</p>
 </header>
 
-<div class="search">
-<input type="text" placeholder="Buscar producto..." onkeyup="buscar(this.value)">
+<div class="admin-panel" id="adminPanel">
+<strong>Panel de administración</strong><br><br>
+
+Marca:
+<select id="marca">
+<option value="todos">Todos</option>
+<option value="termofusion">Termofusión</option>
+<option value="valvulas">Válvulas</option>
+</select>
+
+Aumento %:
+<input type="number" id="aumento" placeholder="0">
+
+<button onclick="aplicarAumento()">Aplicar</button>
 </div>
 
 <div class="container">
 
-<div class="category">🔧 Termofusión</div>
+<input type="text" id="buscador" placeholder="Buscar producto..." onkeyup="render()">
 
-<div class="product" data-name="caño termofusion">
-<img src="Caño termofusion.jpg">
-<div class="info">
-<div class="title">Caño Termofusión 20mm</div>
-<div class="price">$5.772</div>
-</div>
-<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20el%20Caño%20Termofusión%2020mm">Consultar</a>
+<div class="categorias">
+<button onclick="filtrar('todos')">Todos</button>
+<button onclick="filtrar('termofusion')">Termofusión</button>
+<button onclick="filtrar('valvulas')">Válvulas</button>
 </div>
 
-<div class="product" data-name="codo 90">
-<img src="Codo 90° 25mm.jpg">
-<div class="info">
-<div class="title">Codo 90° 25mm</div>
-<div class="price">$516</div>
-</div>
-<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20el%20Codo%2090%2025mm">Consultar</a>
+<div id="productos"></div>
+
+<div class="checkout">
+
+<div class="field">
+<label>Nombre</label>
+<input type="text" id="nombre" placeholder="Ej: Juan Pérez">
 </div>
 
-<div class="category">🚿 Válvulas</div>
-
-<div class="product" data-name="valvula esferica">
-<img src="Válvula Esférica media.jpg">
-<div class="info">
-<div class="title">Válvula Esférica 1/2</div>
-<div class="price">$1.476</div>
+<div class="field">
+<label>Dirección</label>
+<input type="text" id="direccion" placeholder="Ej: Av. Siempre Viva 123">
 </div>
-<a class="btn" href="https://wa.me/5491158410683?text=Hola,%20te%20consulto%20por%20la%20Válvula%20Esférica%201/2">Consultar</a>
+
+<div class="total" id="total">Total: $0</div>
+
+<button class="btn" onclick="enviarPedido()">
+📲 Enviar pedido por WhatsApp
+</button>
+
 </div>
 
 </div>
 
 <script>
-function buscar(valor) {
-    let productos = document.querySelectorAll(".product");
+const urlParams = new URLSearchParams(window.location.search);
+if(urlParams.get('admin') === 'true'){
+    document.getElementById("adminPanel").style.display = "block";
+}
 
-    productos.forEach(p => {
-        let nombre = p.getAttribute("data-name");
+let filtro = "todos";
 
-        if (nombre.includes(valor.toLowerCase())) {
-            p.style.display = "flex";
-        } else {
-            p.style.display = "none";
+function filtrar(cat){
+    filtro = cat;
+    render();
+}
+
+let productos = [
+    {nombre:"Caño 20mm", precio:5772, marca:"termofusion", cantidad:0},
+    {nombre:"Caño 25mm", precio:8708, marca:"termofusion", cantidad:0},
+    {nombre:"Codo 25mm", precio:516, marca:"termofusion", cantidad:0},
+    {nombre:"Válvula 1/2", precio:1476, marca:"valvulas", cantidad:0},
+];
+
+function render(){
+    let html = "";
+    let texto = document.getElementById("buscador")?.value?.toLowerCase() || "";
+
+    productos.forEach((p,i)=>{
+        if(
+            (filtro === "todos" || p.marca === filtro) &&
+            p.nombre.toLowerCase().includes(texto)
+        ){
+            html += `
+            <div class="product">
+                <div>
+                    <div class="title">${p.nombre}</div>
+                    <div class="price">$${p.precio}</div>
+                </div>
+                <div class="controls">
+                    <button onclick="cambiar(${i},-1)">-</button>
+                    <div class="qty">${p.cantidad}</div>
+                    <button onclick="cambiar(${i},1)">+</button>
+                </div>
+            </div>`;
         }
     });
+
+    document.getElementById("productos").innerHTML = html;
 }
+
+function cambiar(i,val){
+    productos[i].cantidad += val;
+    if(productos[i].cantidad < 0) productos[i].cantidad = 0;
+    actualizarTotal();
+    render();
+}
+
+function actualizarTotal(){
+    let total = 0;
+    productos.forEach(p=>{
+        total += p.precio * p.cantidad;
+    });
+    document.getElementById("total").innerText = "Total: $" + total;
+}
+
+function enviarPedido(){
+    let nombre = document.getElementById("nombre").value;
+    let direccion = document.getElementById("direccion").value;
+
+    let mensaje = "Hola, quiero hacer un pedido:%0A%0A";
+
+    productos.forEach(p=>{
+        if(p.cantidad > 0){
+            mensaje += `- ${p.cantidad} x ${p.nombre}%0A`;
+        }
+    });
+
+    mensaje += "%0A" + document.getElementById("total").innerText;
+    mensaje += `%0A%0ANombre: ${nombre}`;
+    mensaje += `%0ADirección: ${direccion}`;
+
+    window.open("https://wa.me/5491111111111?text=" + mensaje);
+}
+
+function aplicarAumento(){
+    let porcentaje = document.getElementById("aumento").value;
+    let marca = document.getElementById("marca").value;
+
+    productos.forEach(p=>{
+        if(marca === "todos" || p.marca === marca){
+            p.precio = Math.round(p.precio * (1 + porcentaje/100));
+        }
+    });
+
+    render();
+    actualizarTotal();
+}
+
+render();
 </script>
 
 </body>
